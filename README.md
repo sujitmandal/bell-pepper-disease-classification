@@ -13,7 +13,7 @@ Step 2 : cd bell-pepper-disease-classification
 
 Step 3 : pip install -r requirements.txt or pip3 install -r requirements.txt
 
-Step 4 : python py_excel.py Excel_file
+Step 4 : python CNN_Model.py
 ```
 
 ## Required Package's or Librarie's:
