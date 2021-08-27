@@ -216,4 +216,12 @@ for images, labels in test_dataset.take(1):
         plt.axis("off")
 
 
-model.save('models')
+model_dir = os.listdir("saved_models")
+
+if len(model_dir) != 0:
+    model_version=max([int(i) for i in model_dir + [0]])+1
+else:
+    os.mkdir('1')
+    model_version = '1'
+
+model.save(f"saved_models/{model_version}")
