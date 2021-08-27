@@ -361,9 +361,13 @@ for images, labels in test_dataset.take(1):
         
         plt.axis("off")
 
-# Saving the TF Lite Model¶
-model_version = max([int(i) for i in (os.listdir("tf-lite-models")+[0])]) + 1
+# Saving the TF Lite Model
+model_dir = os.listdir("tf-lite-models")
 
-with open(
-    f"tf-lite-models/tf-lite-models-" + str(model_version) + ".tflite", 'wb') as f:
-        f.write(quantized_tflite_model)
+if len(model_dir) != 0:
+    model_version = int(model_dir[-1].split('.')[0][-1]) + 1
+else:
+    model_version = 1
+
+with open("tf-lite-models/tf-lite-model-" + str(model_version) + ".tflite", 'wb') as tflite_modle:
+        tflite_modle.write(quantized_tflite_model)
