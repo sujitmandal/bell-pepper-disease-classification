@@ -197,9 +197,9 @@ def predict(model, img):
     predictions = model.predict(img_array)
     predicted_class = class_names[np.argmax(predictions[0])]
     
-    confidence = round(100 * (np.max(predictions[0])), 2)
+    accuracy = round(100 * (np.max(predictions[0])), 2)
     
-    return(predicted_class, confidence)
+    return(predicted_class, accuracy)
 
 
 plt.figure(figsize=(15, 15))
@@ -208,10 +208,10 @@ for images, labels in test_dataset.take(1):
         ax = plt.subplot(3, 3, i + 1)
         plt.imshow(images[i].numpy().astype("uint8"))
         
-        predicted_class, confidence = predict(model, images[i].numpy())
+        predicted_class, accuracy = predict(model, images[i].numpy())
         actual_class = class_names[labels[i]] 
         
-        plt.title(f"Actual: {actual_class},\n Predicted: {predicted_class}.\n Confidence: {confidence}%")
+        plt.title(f"Actual: {actual_class},\n Predicted: {predicted_class}.\n Accuracy: {accuracy}%")
         
         plt.axis("off")
 
