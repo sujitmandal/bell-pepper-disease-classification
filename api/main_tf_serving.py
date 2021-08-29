@@ -8,7 +8,7 @@ import tensorflow as tf
 from fastapi import File
 from fastapi import FastAPI
 from fastapi import UploadFile
-
+from fastapi.middleware.cors import CORSMiddleware
 
 # Github: https://github.com/sujitmandal
 # Pypi : https://pypi.org/user/sujitmandal/
@@ -16,8 +16,20 @@ from fastapi import UploadFile
 
 app = FastAPI()
 
+origins = [
+    "http://localhost",
+    "http://localhost:3000",
+]
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-endpoint = 'http://localhost:5000/v1/models/bell_pepper_model:predict'
+
+endpoint = 'http://localhost:8501/v1/models/bell_pepper_model:predict'
 
 class_name = ['Bacterial spot', 'healthy']
 
@@ -39,16 +51,16 @@ async def predict(file: UploadFile = File(...)):
 
     predictions = np.array(response.json()["predictions"][0])
 
-    predict_class = class_name[np.argmax(predictions[0])]
+    predicted_class = class_name[np.argmax(predictions)]
 
-    accuracy = np.max(predictions[0])
+    accuracy = np.max(predictions)
 
     result = {
-        'classs' : predict_class,
+        'class' : predicted_class,
         'accuracy' : float(accuracy)
     }
 
     return(result)
 
 if __name__ == "__main__":
-    uvicorn.run(app, host='localhost', port=7000)
+    uvicorn.run(app, host='localhost', port=5000)

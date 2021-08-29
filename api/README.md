@@ -24,9 +24,21 @@ Step 2 : pip install -r requirements.txt or pip3 install -r requirements.txt
 
 Step 3 : python main.py
 
-Step 4 : python main_tf_serving.py.py
+```
+## OR 
+```
+Step 1 : cd bell-pepper-disease-classification/api
+
+Step 2 : pip install -r requirements.txt or pip3 install -r requirements.txt
+
+Step3 : python main_tf_serving.py.py
 ```
 
+
+## Open Postman
+```
+http://localhost:5000/predict
+```
 
 
 ## TF Serving Installation Instructions & Config File Help

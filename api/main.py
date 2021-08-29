@@ -7,13 +7,29 @@ import tensorflow as tf
 from fastapi import File
 from fastapi import FastAPI
 from fastapi import UploadFile
-
+from fastapi.middleware.cors import CORSMiddleware
 
 # Github: https://github.com/sujitmandal
 # Pypi : https://pypi.org/user/sujitmandal/
 # LinkedIn : https://www.linkedin.com/in/sujit-mandal-91215013a/
 
 app = FastAPI()
+
+
+
+# origins = [
+#     "http://localhost",
+#     "http://localhost:3000",
+# ]
+# app.add_middleware(
+#     CORSMiddleware,
+#     allow_origins=origins,
+#     allow_credentials=True,
+#     allow_methods=["*"],
+#     allow_headers=["*"],
+# )
+
+
 
 model = tf.keras.models.load_model("../saved_models/2")
 
@@ -33,12 +49,12 @@ async def predict(file: UploadFile = File(...)):
 
     predictions = model.predict(image_batch)
 
-    predict_class = class_name[np.argmax(predictions[0])]
+    predicted_class = class_name[np.argmax(predictions[0])]
 
     accuracy = np.max(predictions[0])
 
     result = {
-        'classs' : predict_class,
+        'class' : predicted_class,
         'accuracy' : float(accuracy)
     }
 
@@ -46,4 +62,4 @@ async def predict(file: UploadFile = File(...)):
 
 
 if __name__ == "__main__":
-    uvicorn.run(app, host='localhost', port=6000)
+    uvicorn.run(app, host='localhost', port=5000)
