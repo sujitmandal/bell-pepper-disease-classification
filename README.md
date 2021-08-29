@@ -1,8 +1,8 @@
 ## bell pepper disease classification
-
+bell pepper disease classification
 
 ## Dataset 
-[Datset Link](https://www.kaggle.com/arjuntejaswi/plant-village)
+[Dataset Link](https://www.kaggle.com/arjuntejaswi/plant-village)
 
 
 ## How To Run
