@@ -1,0 +1,9 @@
+sudo apt install docker.io
+sudo snap install docker
+docker --version
+sudo docker run hello-world
+sudo docker images
+sudo docker ps -a
+
+
+docker rm -v container id
