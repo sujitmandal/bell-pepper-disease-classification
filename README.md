@@ -10,7 +10,7 @@ bell pepper disease classification
 ## Training Model
 
 ```
-Step 1 : git clonehttps://github.com/sujitmandal/bell-pepper-disease-classification.git
+Step 1 : git clone https://github.com/sujitmandal/bell-pepper-disease-classification.git
 
 Step 2 : cd bell-pepper-disease-classification
 
@@ -26,7 +26,7 @@ Step 1 python CNN_Quantized_tf_lite_Model.py
 
 ## Install ReactJS
 ```
-Step 1 : cd WebAPP
+Step 1 : cd webApp
 
 Step 2 : sudo apt update
 
@@ -54,13 +54,13 @@ Step 1 : cd api
 
 Step 2 : pip install -r requirements.txt or pip3 install -r requirements.txt
 
-Step 3 : python main_tf_serving.py.py
+Step 3 : python main_tf_serving.py
 ```
 
 ## Run ReactJS
 
 ```
-Step 1 : cd WebAPP
+Step 1 : cd webApp
 
 Step 2 : npm run start
 ```
